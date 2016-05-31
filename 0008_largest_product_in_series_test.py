@@ -31,7 +31,6 @@ Answer:
 
 
 from collections import deque
-from operator import mul
 
 
 def window(seq, n):
