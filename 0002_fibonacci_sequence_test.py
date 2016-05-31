@@ -11,7 +11,10 @@ find the sum of the even-valued terms.
 Answer:
     4613732
 """
-from itertools import islice, takewhile
+
+
+from itertools import takewhile
+
 
 def fib():
     x = 0
@@ -20,5 +23,10 @@ def fib():
         x, y = y, x + y
         yield y
 
+
+def sum_fib(limit):
+    return sum(x for x in takewhile(lambda y: y < limit, fib()) if not x % 2)
+
+
 def test_0002_fibonacci_sequence():
-    assert sum(x for x in takewhile(lambda y: y < 4000000, fib()) if not x % 2) == 4613732
+    assert sum_fib(4000000) == 4613732

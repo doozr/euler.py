@@ -8,8 +8,8 @@ Answer:
     6857
 """
 
+
 from math import sqrt
-from itertools import count, takewhile
 
 
 def is_prime(x):
@@ -21,6 +21,7 @@ def is_prime(x):
 
 def reverse_primes(start):
     return (x for x in range(start, 1, -1) if is_prime(x))
+
 
 def highest_prime_factor(x):
     limit = int(sqrt(x) + 1)

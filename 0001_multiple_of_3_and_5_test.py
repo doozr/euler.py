@@ -9,5 +9,10 @@ Answer:
     233168
 """
 
+
+def multiples_of_three_and_five(limit):
+    return sum(x for x in range(1,limit) if not x % 3 or not x % 5)
+
+
 def test_0001_multiples_of_three_and_five():
-    assert sum(x for x in range(1,1000) if not x % 3 or not x % 5) == 233168
+    assert multiples_of_three_and_five(1000) == 233168
