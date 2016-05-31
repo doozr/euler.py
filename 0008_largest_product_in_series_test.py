@@ -30,16 +30,7 @@ Answer:
 """
 
 
-from collections import deque
-
-
-def window(seq, n):
-    it = iter(seq)
-    win = deque((next(it) for _ in xrange(n)), maxlen=n)
-    yield win
-    for e in it:
-        win.append(e)
-        yield win
+from euler.iter import window
 
 
 def largest_product_in_series(seq, n):
