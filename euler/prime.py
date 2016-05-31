@@ -15,9 +15,8 @@ def primes():
 
 def sieve(upper_bound):
     marked = [0] * upper_bound
-    value = 3
     yield 2
-    for value in (x for x in xrange(value, upper_bound, 2) if marked[x] == 0):
+    for value in (x for x in xrange(3, upper_bound, 2) if marked[x] == 0):
         yield value
         for i in xrange(value, upper_bound, value):
             marked[i] = 1
