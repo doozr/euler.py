@@ -10,11 +10,11 @@ Answer:
 
 
 from math import sqrt
-from euler.prime import is_prime
+from euler.prime import sieve
 
 
 def reverse_primes(start):
-    return (x for x in range(start, 1, -1) if is_prime(x))
+    return reversed(list(sieve(start)))
 
 
 def highest_prime_factor(x):
