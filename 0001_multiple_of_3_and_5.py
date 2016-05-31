@@ -9,4 +9,5 @@ Answer:
     233168
 """
 
-assert sum(x for x in range(1,1000) if not x % 3 or not x % 5) == 233168
+def test_0001_multiples_of_three_and_five():
+    assert sum(x for x in range(1,1000) if not x % 3 or not x % 5) == 233168

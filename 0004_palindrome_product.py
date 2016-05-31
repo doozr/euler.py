@@ -14,8 +14,9 @@ def is_palindrome(s):
     return s[:split] == s[-split:][::-1]
 
 
-assert max(x
-        for x in (y * z
-            for y in range(100, 1000)
-            for z in range(100, y + 1))
-        if is_palindrome(str(x))) == 906609
+def test_0004_palindrome_product():
+    assert max(x
+            for x in (y * z
+                for y in range(100, 1000)
+                for z in range(100, y + 1))
+            if is_palindrome(str(x))) == 906609

@@ -20,4 +20,5 @@ def fib():
         x, y = y, x + y
         yield y
 
-assert sum(x for x in takewhile(lambda y: y < 4000000, fib()) if not x % 2) == 4613732
+def test_0002_fibonacci_sequence():
+    assert sum(x for x in takewhile(lambda y: y < 4000000, fib()) if not x % 2) == 4613732
