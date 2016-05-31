@@ -9,10 +9,10 @@ Answer:
 """
 
 # For each value that the accumulator does not already divide by,
-# multiply the accumulator by the lowest value that makes it divide
-# the old accumulator and the new value
-print reduce(
+# multiply the accumulator by the lowest integer that makes it divide by
+# both the old accumulator and the new value
+assert reduce(
     lambda acc, x: acc * next(y for y in range(1, x + 1) if (acc * y) % x == 0),
     range(2, 21),
     1
-)
+) == 232792560

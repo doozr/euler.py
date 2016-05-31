@@ -20,4 +20,4 @@ def fib():
         x, y = y, x + y
         yield y
 
-print sum(x for x in takewhile(lambda y: y < 4000000, fib()) if not x % 2)
+assert sum(x for x in takewhile(lambda y: y < 4000000, fib()) if not x % 2) == 4613732

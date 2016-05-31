@@ -27,4 +27,4 @@ def highest_prime_factor(x):
     return next(y for y in reverse_primes(limit) if not x % y)
 
 
-print highest_prime_factor(600851475143)
+assert highest_prime_factor(600851475143) == 6857

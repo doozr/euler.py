@@ -9,4 +9,4 @@ Answer:
     233168
 """
 
-print sum(x for x in range(1,1000) if not x % 3 or not x % 5)
+assert sum(x for x in range(1,1000) if not x % 3 or not x % 5) == 233168
