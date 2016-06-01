@@ -1,12 +1,8 @@
-from math import sqrt
 from itertools import count
 
 
 def is_prime(x):
-    if not x % 2:
-        return False
-    limit = int(sqrt(x) + 1)
-    return all(x % y for y in range(3, limit))
+    return x in sieve(x + 1)
 
 
 def primes():
@@ -20,3 +16,19 @@ def sieve(upper_bound):
         yield value
         for i in xrange(value, upper_bound, value):
             marked[i] = 1
+
+
+def prime_factors(n):
+    if n == 2 or n == 3:
+        yield n
+        return
+    i = 2
+    while i * i < n:
+        while n % i == 0:
+            n /= i
+            yield i
+        i += 1
+    if n > 1:
+        yield n
+
+
