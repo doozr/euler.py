@@ -23,21 +23,23 @@ Answer:
 memo = {1: 1}
 
 
+def next_collatz(n):
+    return n / 2 if n % 2 == 0 else 3 * n + 1
+
+
 def count_collatz(n):
     if n not in memo:
-        if n % 2 == 0:
-            memo[n] = count_collatz(n / 2) + 1
-        else:
-            memo[n] = count_collatz(n * 3 + 1) + 1
+        memo[n] = count_collatz(next_collatz(n)) + 1
     return memo[n]
 
 
 def longest_collatz_sequence(limit):
-    n, l = reduce(
-        lambda a, x: x if x[1] > a[1] else a,
-        ((x, count_collatz(x))
-         for x in range(1, limit)),
-        (0, 0))
+    def is_max((ax, al), (nx, nl)):
+        return (nx, nl) if nl > al else (ax, al)
+
+    n, l = reduce(is_max,
+                  ((x, count_collatz(x)) for x in range(1, limit)),
+                  (0, 0))
     return n
 
 
