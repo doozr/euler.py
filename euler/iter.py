@@ -11,6 +11,20 @@ def window(seq, n):
         yield win
 
 
+def greedy_window(seq, n):
+    it = iter(seq)
+    win = deque([next(it)], maxlen=n)
+    yield win
+    for e in it:
+        win.append(e)
+        yield win
+    while True:
+        win.popleft()
+        if not len(win):
+            break
+        yield win
+
+
 def zipwith(fn, *args):
     return (fn(*xs) for xs in izip(*args))
 
