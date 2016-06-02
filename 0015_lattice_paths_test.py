@@ -14,6 +14,7 @@ Answer:
     137846528820
 """
 
+
 # This problem is calculating a binomial coefficient, the formula
 # of which is:
 #              ( n )       n!
@@ -40,7 +41,10 @@ Answer:
 #           ----------- = ------ = 137846528820
 #           20!(40-20)!   20!20!
 
+
 from math import factorial
+from itertools import islice
+from euler.iter import greedy_window
 
 
 def binom(n, k):
@@ -48,5 +52,28 @@ def binom(n, k):
     return factorial(n) / (factorial(k) * factorial(n - k))
 
 
+# But that's really boring, so instead let's build Pascal's Triangle,
+# which gives us the same result but using addition instead of factorial
+# and doesn't exceed the bounds of sane numbers. Well, not much.
+
+
+def pascals_triangle():
+    yield [1]
+    row = [1, 1]
+    while True:
+        yield row
+        row = [sum(xs) for xs in greedy_window(row, 2)]
+
+
+def binom_interesting(n, k):
+    assert 0 < k < n
+    row = next(islice(pascals_triangle(), n, n+1))
+    return row[k]
+
+
+# Test them both
+
+
 def test_0015_lattice_paths():
     assert binom(40, 20) == 137846528820
+    assert binom_interesting(40, 20) == 137846528820
