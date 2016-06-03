@@ -2,30 +2,34 @@ from collections import deque
 from itertools import izip, izip_longest
 
 
+def take(seq, n):
+    return (next(seq) for _ in xrange(n))
+
+
 def window(seq, n):
     it = iter(seq)
-    win = deque((next(it) for _ in xrange(n)), maxlen=n)
-    yield win
-    for e in it:
-        win.append(e)
-        yield win
+    w = deque(take(it, n), maxlen=n)
+    yield w
+    for x in it:
+        w.append(x)
+        yield w
 
 
-def greedy_window(seq, n):
+def window_greedy(seq, n):
     it = iter(seq)
-    win = deque([next(it)], maxlen=n)
-    yield win
-    for e in it:
-        win.append(e)
-        yield win
+    w = deque(take(it, 1), maxlen=n)
+    yield w
+    for x in it:
+        w.append(x)
+        yield w
     while True:
-        win.popleft()
-        if not len(win):
+        w.popleft()
+        if not len(w):
             break
-        yield win
+        yield w
 
 
-def zipwith(fn, *args):
+def zip_with(fn, *args):
     return (fn(*xs) for xs in izip(*args))
 
 

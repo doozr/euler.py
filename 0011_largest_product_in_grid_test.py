@@ -33,17 +33,17 @@ Answer:
 """
 
 
-from euler.iter import window, zipwith, transpose, transpose_irregular, reverse
+from euler.iter import window, zip_with, transpose, transpose_irregular, reverse
 from itertools import islice, count, chain
 from operator import mul
 
 
 def strip_tails(xss):
-    return zipwith(lambda xs, n: reverse(islice(xs, 0, n)), xss, count(1))
+    return zip_with(lambda xs, n: reverse(islice(xs, 0, n)), xss, count(1))
 
 
 def strip_heads(xss):
-    return zipwith(lambda xs, n: islice(xs, n, None), xss, count())
+    return zip_with(lambda xs, n: islice(xs, n, None), xss, count())
 
 
 def diagonals(xss):

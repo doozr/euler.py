@@ -44,7 +44,7 @@ Answer:
 
 from math import factorial
 from itertools import islice
-from euler.iter import greedy_window
+from euler.iter import window_greedy
 
 
 def binom(n, k):
@@ -62,7 +62,7 @@ def pascals_triangle():
     row = [1, 1]
     while True:
         yield row
-        row = [sum(xs) for xs in greedy_window(row, 2)]
+        row = [sum(xs) for xs in window_greedy(row, 2)]
 
 
 def binom_interesting(n, k):
