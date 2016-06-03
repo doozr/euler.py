@@ -27,7 +27,7 @@ from datetime import datetime
 
 def count_months_starting_with_day(start_year, end_year, day):
     return sum(1
-               for year in range(start_year, end_year+1)
+               for year in range(start_year, end_year + 1)
                for month in range(1, 13)
                if datetime(year, month, 1).weekday() == day)
 

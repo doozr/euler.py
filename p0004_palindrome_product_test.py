@@ -16,10 +16,10 @@ def is_palindrome(s):
 
 def palindrome_product(limit):
     return max(x
-        for x in (y * z
-            for y in range(100, limit)
-            for z in range(100, y + 1))
-        if is_palindrome(str(x)))
+               for x in (y * z
+                         for y in range(100, limit)
+                         for z in range(100, y + 1))
+               if is_palindrome(str(x)))
 
 
 def test_0004_palindrome_product():
