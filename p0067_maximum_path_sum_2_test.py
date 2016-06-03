@@ -24,23 +24,13 @@ Answer:
 
 
 from os import path
-from itertools import izip
-from euler.iter import window
+from p0018_maximum_path_sum_1_test import maximum_path_sum
 
 
 def load_triangle():
     cwd = path.dirname(path.realpath(__file__))
     with open(path.join(cwd, "files", "p067_triangle.txt")) as f:
         return [[int(x.lstrip("0")) for x in l.split(" ")] for l in f]
-
-
-# Copied from 0018
-def maximum_path_sum(triangle):
-    iterator = reversed(triangle)
-    return next(reduce(
-        lambda a, xs: (x + max(w) for x, w in izip(xs, window(a, 2))),
-        iterator, next(iterator)
-    ))
 
 
 def test_0067_maximum_path_sum():
