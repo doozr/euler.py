@@ -30,10 +30,14 @@ from itertools import izip, count
 from euler.math import fib
 
 
-def fib_index(pred):
-    return next(ix for f, ix in izip(fib(), count(1)) if pred(f))
+def fib_index(predicate):
+    return next(ix for f, ix in izip(fib(), count(1)) if predicate(f))
+
+
+def lowest_fib_with_length(n):
+    return fib_index(lambda f: f >= n)
 
 
 def test_0025_1000_digit_fibonacci_number():
-    assert fib_index(lambda f: f >= 10**999) == 4782
+    assert lowest_fib_with_length(10**999) == 4782
 
