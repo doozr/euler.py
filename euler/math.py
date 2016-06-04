@@ -17,3 +17,14 @@ def divisors(n):
 
 def muls(seq):
     return reduce(mul, seq, 1)
+
+
+def fib():
+    x = 0
+    y = 1
+    yield y
+    while True:
+        x, y = y, x + y
+        yield y
+
+

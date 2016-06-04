@@ -14,14 +14,7 @@ Answer:
 
 
 from itertools import takewhile
-
-
-def fib():
-    x = 0
-    y = 1
-    while True:
-        x, y = y, x + y
-        yield y
+from euler.math import fib
 
 
 def sum_fib(limit):
