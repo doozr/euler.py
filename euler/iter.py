@@ -6,6 +6,12 @@ def take(seq, n):
     return (next(seq) for _ in xrange(n))
 
 
+def take_until(pred, seq):
+    for x in seq:
+        yield x
+        if pred(x):
+            break
+
 def window(seq, n):
     it = iter(seq)
     w = deque(take(it, n), maxlen=n)
