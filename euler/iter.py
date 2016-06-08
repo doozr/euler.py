@@ -51,3 +51,11 @@ def reverse(xs):
     return list(xs)[::-1]
 
 
+def scan(fn, xs, a):
+    for x in xs:
+        a = fn(a, x)
+        yield a
+
+
+def scan_right(fn, xs, a):
+    return reverse(scan(fn, reverse(xs), a))
