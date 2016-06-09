@@ -54,7 +54,7 @@ def diagonals(xss):
 
 
 def rolling_product(xss, n):
-    windows = chain(*(window(xs, n) for xs in xss))
+    windows = chain.from_iterable(window(xs, n) for xs in xss)
     return (reduce(mul, w, 1) for w in windows)
 
 
