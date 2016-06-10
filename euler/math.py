@@ -28,3 +28,5 @@ def fib():
         yield y
 
 
+def factorial(x):
+    return 1 if x == 0 else reduce(mul, xrange(2, x + 1), 1)
