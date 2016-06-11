@@ -59,3 +59,7 @@ def scan(fn, xs, a):
 
 def scan_right(fn, xs, a):
     return reverse(scan(fn, reverse(xs), a))
+
+
+def length(seq):
+    return reduce(lambda a, _: a + 1, seq, 0)
