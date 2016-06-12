@@ -27,6 +27,7 @@ Answer:
 
 from itertools import takewhile, count
 from euler.prime import sieve
+from euler.iter import length
 
 
 # Precalculate primes - this limits the scale of
@@ -47,7 +48,7 @@ def prime_range(limit):
 
 
 def num_primes(seq):
-    return len(list(takewhile(is_prime, seq)))
+    return length(takewhile(is_prime, seq))
 
 
 def quadratic(a, b):
