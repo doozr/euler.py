@@ -1,3 +1,6 @@
+from __future__ import absolute_import
+from math import log
+from functools import reduce
 from operator import mul
 
 
@@ -30,3 +33,7 @@ def fib():
 
 def factorial(x):
     return 1 if x == 0 else reduce(mul, xrange(2, x + 1), 1)
+
+
+def num_digits(n, base=10):
+    return int(log(n, base)) + 1
