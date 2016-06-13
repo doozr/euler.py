@@ -12,6 +12,7 @@ def take_until(pred, seq):
         if pred(x):
             break
 
+
 def window(seq, n):
     it = iter(seq)
     w = deque(take(it, n), maxlen=n)
@@ -63,3 +64,7 @@ def scan_right(fn, xs, a):
 
 def length(seq):
     return reduce(lambda a, _: a + 1, seq, 0)
+
+
+def first(seq):
+    return next(iter(seq))
