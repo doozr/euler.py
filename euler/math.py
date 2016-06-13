@@ -37,3 +37,13 @@ def factorial(x):
 
 def num_digits(n, base=10):
     return int(log(n, base)) + 1
+
+
+def is_pandigital(x, n = None):
+    lx = len(x)
+    sx = set(x)
+    return (not n or lx == n) and \
+           lx == len(sx) and \
+           sx == set(str(d) for d in xrange(1, len(x) + 1))
+
+
