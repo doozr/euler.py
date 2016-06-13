@@ -18,7 +18,7 @@ def divisors(n):
     return list(_divisors())
 
 
-def muls(seq):
+def product(seq):
     return reduce(mul, seq, 1)
 
 
