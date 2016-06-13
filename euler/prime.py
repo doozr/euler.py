@@ -1,8 +1,15 @@
+from __future__ import absolute_import
 from itertools import count
+from math import sqrt
 
 
-def is_prime(x):
-    return x in sieve(x + 1)
+def is_prime(n):
+    if n < 2:
+        return False
+    for i in xrange(2, int(sqrt(n) + 1)):
+        if not n % i:
+            return False
+    return True
 
 
 def primes():

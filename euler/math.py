@@ -40,10 +40,7 @@ def num_digits(n, base=10):
 
 
 def is_pandigital(x, n = None):
-    lx = len(x)
-    sx = set(x)
-    return (not n or lx == n) and \
-           lx == len(sx) and \
-           sx == set(str(d) for d in xrange(1, len(x) + 1))
-
+    sx = set(str(x))
+    c = set(str(cc) for cc in xrange(1, n or len(sx) + 1))
+    return sx == c
 
