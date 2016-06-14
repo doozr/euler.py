@@ -36,16 +36,20 @@ def load_words():
         return reduce(sum, (split_csv(line) for line in fd), [])
 
 
-def triangle_words(words):
+def word_scores(words):
     def char_val(c):
         return ord(c) - 64
 
     def word_score(w):
         return sum(char_val(c) for c in w)
 
-    return ((word, word_score(word))
-            for word in words
-            if word_score(word) in TRIANGLE_NUMBERS)
+    return ((word, word_score(word)) for word in words)
+
+
+def triangle_words(words):
+    return (word_score
+            for word_score in word_scores(words)
+            if word_score[1] in TRIANGLE_NUMBERS)
 
 
 def test_0042_coded_triangle_numbers():
