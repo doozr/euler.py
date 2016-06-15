@@ -15,7 +15,7 @@ def divisors(n):
             i += 1
         if i * i == n:
             yield i
-    return list(_divisors())
+    return set(_divisors())
 
 
 def product(seq):
@@ -32,7 +32,7 @@ def fib():
 
 
 def factorial(x):
-    return 1 if x == 0 else reduce(mul, range(2, x + 1), 1)
+    return 1 if x == 0 else product(range(2, x + 1))
 
 
 def num_digits(n, base=10):

@@ -7,10 +7,10 @@ def take(seq, n):
     return (next(seq) for _ in range(n))
 
 
-def take_until(pred, seq):
+def take_until(fn, seq):
     for x in seq:
         yield x
-        if pred(x):
+        if fn(x):
             break
 
 
