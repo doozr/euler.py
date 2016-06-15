@@ -7,12 +7,9 @@ def take(seq, n):
     """
     Get the first n values in a sequence
 
-    Args:
-        seq: The sequence to pull values from
-        n: The number of values to pull
-
-    Returns:
-        A generator yielding the first n values of seq
+    :param seq: The sequence to pull values from
+    :param n: The number of values to pull
+    :return: A generator yielding the first n values of seq
     """
     if n < 0:
         raise ValueError("Only take positive integers")
@@ -24,12 +21,9 @@ def take_while_incl(fn, seq):
     """
     Get values from a sequence up to and including the value that fails the predicate
 
-    Args:
-        fn: The predicate to check each value against
-        seq: The sequence to pull values from
-
-    Returns:
-        A generator yielding values from seq
+    :param fn: The predicate to check each value against
+    :param seq: The sequence to pull values from
+    :return: A generator yielding values from seq
     """
     for x in seq:
         yield x
@@ -50,13 +44,10 @@ def every(seq, step, skip=None):
         every([1, 2, 3, 4], 2, 0)
         >> (1, 3)
 
-    Args:
-        seq: The sequence to pull values from
-        step: The interval between values
-        skip (optional): The number of values to skip before starting
-
-    Returns:
-        A generator yielding values from seq
+    :param seq: The sequence to pull values from
+    :param step: The interval between values
+    :param skip (optional): The number of values to skip before starting
+    :return: A generator yielding values from seq
     """
     i = iter(seq)
     if skip is not None:
@@ -68,6 +59,21 @@ def every(seq, step, skip=None):
 
 
 def window(seq, n):
+    """
+    Get a sliding window of values over a sequence of width n
+
+    Each window will have exactly n values unless the total length
+    of the sequence is lower than n, in which case the entire sequence
+    will be returned as a single window.
+
+    e.g a sliding window of width 3 over [1, 2, 3, 4, 5] returns:
+
+        [1, 2, 3], [2, 3, 4], [3, 4, 5]
+
+    :param seq: The sequence to iterate over
+    :param n: The width of each window
+    :return: A generator yielding lists of values
+    """
     if n <= 0:
         raise ValueError("Window size must be positive integer")
     it = iter(seq)
@@ -79,6 +85,22 @@ def window(seq, n):
 
 
 def window_greedy(seq, n):
+    """
+    Get a sliding window of values over a sequence of widths 1 to n
+
+    Each window will have up to n values starting with the first single
+    value and ending with the last single value. If the length of the
+    sequence is lower than n the entire sequence will be returned as
+    a single window and the width will never be n.
+
+    e.g a sliding window of width 3 over [1, 2, 3, 4, 5] returns:
+
+        [1], [1, 2], [1, 2, 3], [2, 3, 4], [3, 4, 5], [4, 5], [5]
+
+    :param seq: The sequence to iterate over
+    :param n: The maximum width of each window
+    :return: A generator yielding lists of values
+    """
     if n <= 0:
         raise ValueError("Window size must be positive integer")
     it = iter(seq)
