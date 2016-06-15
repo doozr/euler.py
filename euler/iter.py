@@ -37,6 +37,36 @@ def take_while_incl(fn, seq):
             break
 
 
+def every(seq, step, skip=None):
+    """
+    Get every nth value with interval step, optionally skipping some values
+
+    Specify a skip of 0 to retrieve the first value of seq, otherwise (step - 1)
+    will be skipped as part of the normal step interval
+
+        every([1, 2, 3, 4], 2)
+        >> (2, 4)
+
+        every([1, 2, 3, 4], 2, 0)
+        >> (1, 3)
+
+    Args:
+        seq: The sequence to pull values from
+        step: The interval between values
+        skip (optional): The number of values to skip before starting
+
+    Returns:
+        A generator yielding values from seq
+    """
+    i = iter(seq)
+    if skip is not None:
+        list(take(i, skip))
+        yield next(i)
+    while True:
+        list(take(i, step - 1))
+        yield next(i)
+
+
 def window(seq, n):
     if n <= 0:
         raise ValueError("Window size must be positive integer")
