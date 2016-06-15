@@ -10,11 +10,11 @@ def take(seq, n):
     return (next(i) for _ in range(n))
 
 
-def take_until(fn, seq):
+def take_while_incl(fn, seq):
     for x in seq:
-        if fn(x):
-            break
         yield x
+        if not fn(x):
+            break
 
 
 def window(seq, n):
