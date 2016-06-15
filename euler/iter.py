@@ -18,12 +18,14 @@ def take_while_incl(fn, seq):
 
 
 def window(seq, n):
+    if n <= 0:
+        raise ValueError("Window size must be positive integer")
     it = iter(seq)
     w = deque(take(it, n), maxlen=n)
-    yield w
+    yield list(w)
     for x in it:
         w.append(x)
-        yield w
+        yield list(w)
 
 
 def window_greedy(seq, n):
