@@ -4,6 +4,16 @@ from functools import reduce
 
 
 def take(seq, n):
+    """
+    Get the first n values in a sequence
+
+    Args:
+        seq: The sequence to pull values from
+        n: The number of values to pull
+
+    Returns:
+        A generator yielding the first n values of seq
+    """
     if n < 0:
         raise ValueError("Only take positive integers")
     i = iter(seq)
@@ -11,6 +21,16 @@ def take(seq, n):
 
 
 def take_while_incl(fn, seq):
+    """
+    Get values from a sequence up to and including the value that fails the predicate
+
+    Args:
+        fn: The predicate to check each value against
+        seq: The sequence to pull values from
+
+    Returns:
+        A generator yielding values from seq
+    """
     for x in seq:
         yield x
         if not fn(x):
