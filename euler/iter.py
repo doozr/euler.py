@@ -29,17 +29,19 @@ def window(seq, n):
 
 
 def window_greedy(seq, n):
+    if n <= 0:
+        raise ValueError("Window size must be positive integer")
     it = iter(seq)
     w = deque(take(it, 1), maxlen=n)
-    yield w
+    yield list(w)
     for x in it:
         w.append(x)
-        yield w
+        yield list(w)
     while True:
         w.popleft()
         if not len(w):
             break
-        yield w
+        yield list(w)
 
 
 def zip_with(fn, *args):
