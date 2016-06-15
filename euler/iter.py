@@ -12,9 +12,9 @@ def take(seq, n):
 
 def take_until(fn, seq):
     for x in seq:
-        yield x
         if fn(x):
             break
+        yield x
 
 
 def window(seq, n):
