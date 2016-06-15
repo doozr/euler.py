@@ -4,7 +4,10 @@ from functools import reduce
 
 
 def take(seq, n):
-    return (next(seq) for _ in range(n))
+    if n < 0:
+        raise ValueError("Only take positive integers")
+    i = iter(seq)
+    return (next(i) for _ in range(n))
 
 
 def take_until(fn, seq):
