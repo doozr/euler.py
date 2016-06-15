@@ -6,7 +6,7 @@ from math import sqrt
 def is_prime(n):
     if n < 2:
         return False
-    for i in xrange(2, int(sqrt(n) + 1)):
+    for i in range(2, int(sqrt(n) + 1)):
         if not n % i:
             return False
     return True
@@ -19,9 +19,9 @@ def primes():
 def sieve(upper_bound):
     marked = [0] * upper_bound
     yield 2
-    for value in (x for x in xrange(3, upper_bound, 2) if marked[x] == 0):
+    for value in (x for x in range(3, upper_bound, 2) if marked[x] == 0):
         yield value
-        for i in xrange(value, upper_bound, value):
+        for i in range(value, upper_bound, value):
             marked[i] = 1
 
 

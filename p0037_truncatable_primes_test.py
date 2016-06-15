@@ -23,7 +23,7 @@ PRIMES = set(sieve(1000000))
 def is_truncatable(x):
     return all((x // 10**p) in PRIMES and
                (x % 10**p) in PRIMES
-               for p in xrange(1, num_digits(x)))
+               for p in range(1, num_digits(x)))
 
 
 def truncatable_primes():

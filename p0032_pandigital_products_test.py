@@ -24,7 +24,7 @@ def is_pandigital(x, y):
 
 
 def pandigital_products():
-    return set(x * y for x in xrange(1, 100) for y in range(100, 10000 / x + 1) if is_pandigital(x, y))
+    return set(x * y for x in range(1, 100) for y in range(100, 10000 // x + 1) if is_pandigital(x, y))
 
 
 def test_0032_pandigital_products():

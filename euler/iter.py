@@ -1,9 +1,10 @@
 from collections import deque
-from itertools import izip, izip_longest
+from itertools import zip_longest
+from functools import reduce
 
 
 def take(seq, n):
-    return (next(seq) for _ in xrange(n))
+    return (next(seq) for _ in range(n))
 
 
 def take_until(pred, seq):
@@ -37,15 +38,15 @@ def window_greedy(seq, n):
 
 
 def zip_with(fn, *args):
-    return (fn(*xs) for xs in izip(*args))
+    return (fn(*xs) for xs in zip(*args))
 
 
 def transpose(xss):
-    return izip(*xss)
+    return zip(*xss)
 
 
 def transpose_irregular(xss):
-    return ((x for x in xs if x is not None) for xs in izip_longest(*xss, fillvalue=None))
+    return ((x for x in xs if x is not None) for xs in zip_longest(*xss, fillvalue=None))
 
 
 def reverse(xs):

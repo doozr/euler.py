@@ -29,7 +29,7 @@ def substring_divisibility():
     def _final_iteration(results):
         return ([str(d)] + p
                 for p in results
-                for d in xrange(0, 10)
+                for d in range(0, 10)
                 if str(d) not in p)
 
     def _subsequent_iterations(results, divisors):
@@ -40,7 +40,7 @@ def substring_divisibility():
         return _subsequent_iterations(
             ([str(d)] + p
              for p in results
-             for d in xrange(0, 10)
+             for d in range(0, 10)
              if str(d) not in p and
              list_divides_by([str(d)] + p[:2], divisor)),
             divisors[:-1])
@@ -65,5 +65,5 @@ def test_0043_substring_divisibility():
 #     return sum(int("".join(p))
 #                for p in permutations("9876543210")
 #                if all(set_divides_by(p[y:y + 3], x)
-#                       for x, y in izip(PRIMES, count(1))))
+#                       for x, y in zip(PRIMES, count(1))))
 

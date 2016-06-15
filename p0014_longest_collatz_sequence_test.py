@@ -20,6 +20,9 @@ Answer:
 """
 
 
+from functools import reduce
+
+
 memo = {1: 1}
 
 
@@ -34,8 +37,8 @@ def count_collatz(n):
 
 
 def longest_collatz_sequence(limit):
-    def is_max((ax, al), (nx, nl)):
-        return (nx, nl) if nl > al else (ax, al)
+    def is_max(a, n):
+        return n if n[1] > a[1] else a
 
     n, l = reduce(is_max,
                   ((x, count_collatz(x)) for x in range(1, limit)),

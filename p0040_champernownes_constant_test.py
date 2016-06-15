@@ -15,7 +15,7 @@ Answer:
 """
 
 
-from itertools import chain, count, izip
+from itertools import chain, count
 from euler.math import product
 
 
@@ -24,11 +24,11 @@ def champernownes_digits():
 
 
 def champernownes_product(offsets):
-    return product(n for n, c in izip(champernownes_digits(),
-                                      xrange(0, max(offsets) + 1))
+    return product(n for n, c in zip(champernownes_digits(),
+                                      range(0, max(offsets) + 1))
                    if c in offsets)
 
 
 def test_0040_champernownes_constant():
-    assert champernownes_product([10**x for x in xrange(0, 7)]) == 210
+    assert champernownes_product([10**x for x in range(0, 7)]) == 210
 

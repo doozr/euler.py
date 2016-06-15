@@ -19,7 +19,7 @@ from euler.iter import first
 
 def pythagorean_triples(limit):
     m = limit // 2
-    return ((a, b, sqrt(a**2 + b**2)) for a in xrange(1, m) for b in xrange(1, m - a))
+    return ((a, b, sqrt(a**2 + b**2)) for a in range(1, m) for b in range(1, m - a))
 
 
 def integer_right_triangles(limit):

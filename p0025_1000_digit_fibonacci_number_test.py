@@ -26,12 +26,12 @@ Answer:
 """
 
 
-from itertools import izip, count
+from itertools import count
 from euler.math import fib
 
 
 def fib_index(predicate):
-    return next(ix for f, ix in izip(fib(), count(1)) if predicate(f))
+    return next(ix for f, ix in zip(fib(), count(1)) if predicate(f))
 
 
 def lowest_fib_with_length(n):

@@ -17,6 +17,7 @@ Answer:
 
 
 from os import path
+from functools import reduce
 from itertools import takewhile, count
 from euler.iter import length
 

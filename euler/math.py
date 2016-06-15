@@ -32,7 +32,7 @@ def fib():
 
 
 def factorial(x):
-    return 1 if x == 0 else reduce(mul, xrange(2, x + 1), 1)
+    return 1 if x == 0 else reduce(mul, range(2, x + 1), 1)
 
 
 def num_digits(n, base=10):
@@ -41,6 +41,6 @@ def num_digits(n, base=10):
 
 def is_pandigital(x, n = None):
     sx = set(str(x))
-    c = set(str(cc) for cc in xrange(1, n or len(sx) + 1))
+    c = set(str(cc) for cc in range(1, n or len(sx) + 1))
     return sx == c
 

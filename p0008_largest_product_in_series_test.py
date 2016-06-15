@@ -31,6 +31,7 @@ Answer:
 """
 
 
+from functools import reduce
 from euler.iter import window
 
 

@@ -25,6 +25,7 @@ Answer:
 """
 
 
+from functools import reduce
 from itertools import takewhile, count
 from euler.prime import sieve
 from euler.iter import length

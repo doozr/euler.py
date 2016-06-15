@@ -19,7 +19,7 @@ def to_bin(x):
 
 
 def double_base_palindromes(limit):
-    return (x for x in xrange(1, limit, 2) if is_palindrome(str(x)) and is_palindrome(to_bin(x)))
+    return (x for x in range(1, limit, 2) if is_palindrome(str(x)) and is_palindrome(to_bin(x)))
 
 
 def test_0036_double_base_palindromes():

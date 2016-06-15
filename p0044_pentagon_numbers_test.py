@@ -28,8 +28,8 @@ PENTAGON_NUMBERS = set(PENTAGON_LIST)
 def minimised_diff():
     return next(x - y
                 for x, y in ((PENTAGON_LIST[a], PENTAGON_LIST[b])
-                             for a in xrange(0, len(PENTAGON_LIST))
-                             for b in xrange(a, -1, -1))
+                             for a in range(0, len(PENTAGON_LIST))
+                             for b in range(a, -1, -1))
                 if x + y in PENTAGON_NUMBERS and
                 x - y in PENTAGON_NUMBERS)
 

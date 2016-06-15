@@ -35,7 +35,7 @@ def reverse_primes(x):
 
 
 def period_lengths(seq):
-    return (next((n, k) for k in xrange(1, n) if not (10**k - 1) % n) for n in seq)
+    return (next((n, k) for k in range(1, n) if not (10**k - 1) % n) for n in seq)
 
 
 def n_with_max_reciprocal_cycle(x):

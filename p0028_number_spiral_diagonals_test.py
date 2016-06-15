@@ -37,7 +37,7 @@ def spiral_diagonal_sum(limit):
         (list): A list of values in the diagonals
     """
     assert limit % 2
-    increments = chain.from_iterable(repeat(x, 4) for x in xrange(2, limit, 2))
+    increments = chain.from_iterable(repeat(x, 4) for x in range(2, limit, 2))
     return 1 + sum(scan(add, increments, 1))
 
 

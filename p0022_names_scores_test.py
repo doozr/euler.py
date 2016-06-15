@@ -15,7 +15,8 @@ Answer:
 
 
 from os import path
-from itertools import izip, count
+from functools import reduce
+from itertools import count
 
 
 def load_names():
@@ -34,7 +35,7 @@ def names_scores(names):
     return sum(
         index * sum(char_val(char) for char in name)
         for name, index
-        in izip(sorted(names), count(1)))
+        in zip(sorted(names), count(1)))
 
 
 def test_0022_names_scores():

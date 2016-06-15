@@ -20,7 +20,10 @@ What is the value of the first triangle number to have over five hundred divisor
 Answer:
     76576500
 """
+
+
 from collections import Counter
+from functools import reduce
 from itertools import count
 from operator import mul
 from euler.prime import prime_factors

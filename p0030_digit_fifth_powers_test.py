@@ -48,7 +48,7 @@ def digit_power_sum(x, power):
 
 
 def sum_all_that_equal_power_sum(power):
-    return sum(x for x in xrange(2, limit(power) + 1)
+    return sum(x for x in range(2, limit(power) + 1)
                if digit_power_sum(x, power) == x)
 
 

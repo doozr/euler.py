@@ -13,16 +13,19 @@ Answer:
 """
 
 
+from functools import reduce
+
+
 def nontrivial_fractions():
     return ((x // 10, y % 10)
-            for x in xrange(10, 100)
-            for y in xrange((x % 10) * 10 + 1, (x % 10 + 1) * 10)
+            for x in range(10, 100)
+            for y in range((x % 10) * 10 + 1, (x % 10 + 1) * 10)
             if y > x and
                float(x) / float(y) == float(x // 10) / float(y % 10))
 
 
 def mul_fracs(fracs):
-    return reduce(lambda (a, b), (x, y): (a * x, b * y), fracs, (1, 1))
+    return reduce(lambda ab, xy: (ab[0] * xy[0], ab[1] * xy[1]), fracs, (1, 1))
 
 
 def gcm(a, b):

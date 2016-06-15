@@ -19,8 +19,8 @@ Answer:
 
 def distinct_powers(a_min, a_max, b_min, b_max):
     return len(set(a**b
-                   for a in xrange(a_min, a_max + 1)
-                   for b in xrange(b_min, b_max + 1)))
+                   for a in range(a_min, a_max + 1)
+                   for b in range(b_min, b_max + 1)))
 
 
 def test_0029_distinct_powers():

@@ -14,7 +14,7 @@ from euler.math import is_pandigital
 
 
 def pandigital_prime():
-    return next(x for x in xrange(7654321, 0, -2) if is_pandigital(x) and is_prime(x))
+    return next(x for x in range(7654321, 0, -2) if is_pandigital(x) and is_prime(x))
 
 
 def test_0041_pandigital_prime():

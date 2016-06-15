@@ -33,7 +33,7 @@ def d(n):
 # times instead of 10000 times. Much better.
 def amicable_numbers(limit):
     return (n
-            for n in xrange(1, limit + 1)
+            for n in range(1, limit + 1)
             if d(d(n)) == n and d(n) != n)
 
 

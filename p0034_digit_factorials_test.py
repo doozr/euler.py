@@ -2,7 +2,7 @@ from itertools import count, chain, combinations_with_replacement
 from euler.math import factorial
 
 
-FACTORIALS = [factorial(_n) for _n in xrange(0, 10)]
+FACTORIALS = [factorial(_n) for _n in range(0, 10)]
 
 
 def max_num_digits():
@@ -11,7 +11,7 @@ def max_num_digits():
 
 def inputs(max_digits):
     return chain.from_iterable(
-        ("".join(map(str, x)) for x in combinations_with_replacement(xrange(0, 10), n))
+        ("".join(map(str, x)) for x in combinations_with_replacement(range(0, 10), n))
         for n in range(2, max_digits + 1)
     )
 

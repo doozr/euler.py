@@ -9,7 +9,7 @@ def num_digits(x):
 
 def has_even_digit(x):
     return any((x / 10**n) % 2 == 0
-               for n in xrange(0, num_digits(x)))
+               for n in range(0, num_digits(x)))
 
 
 def rotate(x):
@@ -24,7 +24,7 @@ def rotate(x):
 def rotations(x):
     return set(scan(
         lambda a, _: rotate(a),
-        xrange(0, num_digits(x)), x))
+        range(0, num_digits(x)), x))
 
 
 def circular_primes(limit):

@@ -43,7 +43,7 @@ def pandigital_multiple(x):
 
 
 def max_pandigital_multiple():
-    return max(pandigital_multiple(x) for x in xrange(1, 10000))
+    return max(pandigital_multiple(x) or 0 for x in range(1, 10000))
 
 
 def test_0038_pandigital_multiple():

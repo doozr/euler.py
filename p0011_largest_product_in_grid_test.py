@@ -33,9 +33,9 @@ Answer:
 """
 
 
-from euler.iter import window, zip_with, transpose, transpose_irregular, reverse
 from itertools import islice, count, chain
-from operator import mul
+from euler.iter import window, zip_with, transpose, transpose_irregular, reverse
+from euler.math import product
 
 
 def strip_tails(xss):
@@ -55,7 +55,7 @@ def diagonals(xss):
 
 def rolling_product(xss, n):
     windows = chain.from_iterable(window(xs, n) for xs in xss)
-    return (reduce(mul, w, 1) for w in windows)
+    return (product(w) for w in windows)
 
 
 def largest_product_in_grid(xss, n):
@@ -64,7 +64,7 @@ def largest_product_in_grid(xss, n):
             xss,
             transpose(xss),
             diagonals(xss),
-            diagonals(map(reverse, xss))
+            diagonals([reverse(xs) for xs in xss])
         ), n))
 
 
@@ -92,3 +92,4 @@ def test_0011_largest_product_in_grid():
         [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
     ]
     assert largest_product_in_grid(grid, 4) == 70600674
+

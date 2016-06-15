@@ -18,7 +18,7 @@ def ways_to_make_change(total, denominations):
     def _ways_to_make_change(n, d, r):
         if r:
             return sum(_ways_to_make_change(x, r[0], r[1:])
-                       for x in xrange(n, -1, -d))
+                       for x in range(n, -1, -d))
         else:
             return 1
     ds = list(reversed(sorted(denominations)))

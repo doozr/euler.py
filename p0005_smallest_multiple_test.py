@@ -9,6 +9,9 @@ Answer:
 """
 
 
+from functools import reduce
+
+
 def smallest_multiple(limit):
     # For each value that the accumulator does not already divide by,
     # multiply the accumulator by the lowest integer that makes it divide by
