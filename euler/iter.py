@@ -7,6 +7,9 @@ def take(seq, n):
     """
     Get the first n values in a sequence
 
+        take([1, 2, 3, 4], 2)
+        >> 1, 2
+
     :param seq: The sequence to pull values from
     :param n: The number of values to pull
     :return: A generator yielding the first n values of seq
@@ -20,6 +23,9 @@ def take(seq, n):
 def take_while_incl(fn, seq):
     """
     Get values from a sequence up to and including the value that fails the predicate
+
+        take_while(lambda x: x < 3, [1, 2, 3, 4])
+        >> 1, 2
 
     :param fn: The predicate to check each value against
     :param seq: The sequence to pull values from
@@ -38,15 +44,15 @@ def every(seq, step, skip=None):
     Specify a skip of 0 to retrieve the first value of seq, otherwise (step - 1)
     will be skipped as part of the normal step interval
 
-        every([1, 2, 3, 4], 2)
-        >> (2, 4)
+        every([1, 2, 3, 4, 5, 6], 3)
+        >> 3, 6
 
-        every([1, 2, 3, 4], 2, 0)
-        >> (1, 3)
+        every([1, 2, 3, 4, 5, 6], 2, 0)
+        >> 1, 4
 
     :param seq: The sequence to pull values from
     :param step: The interval between values
-    :param skip (optional): The number of values to skip before starting
+    :param skip: Optional number of values to skip before starting
     :return: A generator yielding values from seq
     """
     i = iter(seq)
@@ -66,9 +72,8 @@ def window(seq, n):
     of the sequence is lower than n, in which case the entire sequence
     will be returned as a single window.
 
-    e.g a sliding window of width 3 over [1, 2, 3, 4, 5] returns:
-
-        [1, 2, 3], [2, 3, 4], [3, 4, 5]
+        window([1, 2, 3, 4, 5], 3)
+        >> [1, 2, 3], [2, 3, 4], [3, 4, 5]
 
     :param seq: The sequence to iterate over
     :param n: The width of each window
@@ -93,9 +98,8 @@ def window_greedy(seq, n):
     sequence is lower than n the entire sequence will be returned as
     a single window and the width will never be n.
 
-    e.g a sliding window of width 3 over [1, 2, 3, 4, 5] returns:
-
-        [1], [1, 2], [1, 2, 3], [2, 3, 4], [3, 4, 5], [4, 5], [5]
+        window_greedy([1, 2, 3, 4, 5], 3)
+        >> [1], [1, 2], [1, 2, 3], [2, 3, 4], [3, 4, 5], [4, 5], [5]
 
     :param seq: The sequence to iterate over
     :param n: The maximum width of each window
@@ -117,6 +121,18 @@ def window_greedy(seq, n):
 
 
 def zip_with(fn, *args):
+    """
+    Map over concurrent values of multiple sequences
+
+    For each iteration the next value of each list is passed to the function.
+
+        zip_with(lambda x, y: (x, y), [1, 2, 3], [4, 5, 6])
+        >> (1, 4), (2, 5), (3, 6)
+
+    :param fn: The map function that accepts one value from each input
+    :param args: An arbitrary number of sequences
+    :return: A generator that yields the mapped values
+    """
     return (fn(*xs) for xs in zip(*args))
 
 
