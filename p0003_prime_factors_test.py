@@ -9,17 +9,12 @@ Answer:
 """
 
 
-from math import sqrt
-from euler.prime import sieve
-
-
-def reverse_primes(start):
-    return reversed(list(sieve(start)))
+from euler.prime import prime_factors
 
 
 def highest_prime_factor(x):
-    limit = int(sqrt(x) + 1)
-    return next(y for y in reverse_primes(limit) if not x % y)
+    y = list(prime_factors(x))
+    return y[-1]
 
 
 def test_0003_prime_factors():
