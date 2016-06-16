@@ -164,3 +164,7 @@ def length(seq):
 
 def first(seq):
     return next(iter(seq))
+
+
+def last(seq):
+    return reduce(lambda a, x: x, iter(seq))

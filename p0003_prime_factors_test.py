@@ -10,11 +10,11 @@ Answer:
 
 
 from euler.prime import prime_factors
+from euler.iter import last
 
 
-def highest_prime_factor(x):
-    y = list(prime_factors(x))
-    return y[-1]
+def highest_prime_factor(n):
+    return last(prime_factors(n))
 
 
 def test_0003_prime_factors():
