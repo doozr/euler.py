@@ -16,4 +16,6 @@ The standard library I mentioned in in the `euler` directory. In particular
 `euler/iter.py` contains a lot of stuff that's missing or hard to find in Python,
 even in the lovely `itertools` module and recipes or the `collections` module.
 
-
+All the code is written with Python 3.5 although any 3.x version should work.
+Each Euler solution is a test that is discoverable by nosetests. It's the only
+third party requirement.
