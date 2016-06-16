@@ -17,9 +17,9 @@ from itertools import takewhile
 from euler.math import fib
 
 
-def sum_fib(limit):
+def sum_fib_evens(limit):
     return sum(x for x in takewhile(lambda y: y < limit, fib()) if not x % 2)
 
 
 def test_0002_fibonacci_sequence():
-    assert sum_fib(4000000) == 4613732
+    assert sum_fib_evens(4000000) == 4613732
