@@ -10,8 +10,15 @@ Answer:
 """
 
 
+from itertools import count, takewhile
+
+
+def multiples_of(ns):
+    return (x for x in count(1) if any(x % n == 0 for n in ns))
+
+
 def multiples_of_three_and_five(limit):
-    return sum(x for x in range(1, limit) if not x % 3 or not x % 5)
+    return sum(takewhile(lambda x: x < limit, multiples_of([3, 5])))
 
 
 def test_0001_multiples_of_three_and_five():
