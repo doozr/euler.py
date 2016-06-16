@@ -1,18 +1,6 @@
 from euler.iter import every
 
 
-def test_every_returns_portions_of_list():
-    assert list(every([1], 1)) == [1]
-
-
-def test_every_returns_portions_of_generator():
-    assert list(every((x for x in [1]), 1)) == [1]
-
-
-def test_every_returns_portions_of_iter():
-    assert list(every(iter([1]), 1)) == [1]
-
-
 def test_every_returns_every_item_if_step_is_one():
     assert list(every([1, 2, 3, 4, 5, 6], 1)) == [1, 2, 3, 4, 5, 6]
 

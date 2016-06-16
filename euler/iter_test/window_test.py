@@ -1,18 +1,6 @@
 from euler.iter import window
 
 
-def test_window_returns_portions_of_list():
-    assert list(window([1, 2], 2)) == [[1, 2]]
-
-
-def test_window_returns_portions_of_generator():
-    assert list(window((x for x in range(1, 3)), 2)) == [[1, 2]]
-
-
-def test_window_returns_portions_of_iter():
-    assert list(window(iter([1, 2]), 2)) == [[1, 2]]
-
-
 def test_window_returns_all_sub_lists():
     assert list(window([1, 2, 3, 4, 5], 3)) == [[1, 2, 3], [2, 3, 4], [3, 4, 5]]
 
