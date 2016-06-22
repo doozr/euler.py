@@ -1,0 +1,5 @@
+.git
+./.*
+*.pyc
+*.xml
+__pycache__
