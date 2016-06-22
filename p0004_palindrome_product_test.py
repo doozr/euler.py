@@ -12,13 +12,22 @@ Answer:
 from euler.util import is_palindrome
 
 
-def palindrome_product(limit):
-    return max(x
-               for x in (y * z
-                         for y in range(100, limit)
-                         for z in range(100, y + 1))
-               if is_palindrome(str(x)))
+def palindrome_product(start, end):
+    lower_bound = start
+    pp = 0
+    x = end
+    while x > lower_bound:
+        y = end
+        while y > lower_bound:
+            r = x * y
+            if is_palindrome(r):
+                lower_bound = min(x, y)
+                pp = max(pp, r)
+            y -= 1
+        x -= 1
+    return pp
 
 
 def test_0004_palindrome_product():
-    assert palindrome_product(1000) == 906609
+    assert palindrome_product(100, 999) == 906609
+
