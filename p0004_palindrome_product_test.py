@@ -10,24 +10,23 @@ Answer:
 
 
 from euler.util import is_palindrome
+from itertools import takewhile
 
 
-def palindrome_product(start, end):
-    lower_bound = start
-    pp = 0
-    x = end
-    while x > lower_bound:
-        y = end
-        while y > lower_bound:
-            r = x * y
-            if is_palindrome(r):
-                lower_bound = min(x, y)
-                pp = max(pp, r)
-            y -= 1
-        x -= 1
-    return pp
+def max_palindrome_product(start, end):
+    def _palindrome_products():
+        lower_bound = start
+        still_valid = lambda n: n > lower_bound
+        for palindrome, new_lower_bound in ((x * y, min(x, y))
+                                            for x in takewhile(still_valid, range(end, 0, -1))
+                                            for y in takewhile(still_valid, range(end, 0, -1))
+                                            if is_palindrome(x * y)):
+            yield palindrome
+            lower_bound = new_lower_bound
+
+    return max(_palindrome_products())
 
 
 def test_0004_palindrome_product():
-    assert palindrome_product(100, 999) == 906609
+    assert max_palindrome_product(100, 999) == 906609
 
