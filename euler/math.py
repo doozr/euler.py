@@ -36,7 +36,16 @@ def factorial(x):
 
 
 def num_digits(n, base=10):
+    if n == 0:
+        return 1
     return int(log(n, base)) + 1
+
+
+def digit(x, d):
+    nd = num_digits(x)
+    if d < 1 or d > nd:
+        raise ValueError("Get digit of %d must be between 1 and %d" % (x, nd))
+    return (x // 10 ** (nd - d)) % 10
 
 
 def is_pandigital(x, n = None):
