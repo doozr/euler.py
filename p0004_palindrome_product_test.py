@@ -16,7 +16,10 @@ from itertools import takewhile
 def max_palindrome_product(start, end):
     def _palindrome_products():
         lower_bound = start
-        still_valid = lambda n: n > lower_bound
+
+        def still_valid(n):
+            return n > lower_bound
+
         for palindrome, new_lower_bound in ((x * y, min(x, y))
                                             for x in takewhile(still_valid, range(end, 0, -1))
                                             for y in takewhile(still_valid, range(end, 0, -1))
