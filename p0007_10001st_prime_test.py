@@ -10,15 +10,15 @@ Answer:
 
 
 from euler.prime import sieve
-from itertools import islice
+from euler.iter import take, last
 
 
 def nth_prime(n):
-    # 2000000 should be enough ...
+    # 200000 should be enough ...
     # The actual 10001st prime is 104743 so 104744 would be enough
     # but given the calculation is lazy it doesn't make a lot of
     # difference. Just storage size of the cache
-    return next(islice(sieve(2000000), n - 1, n))
+    return last(take(sieve(104744), n))
 
 
 def test_10001st_prime():
