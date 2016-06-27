@@ -8,7 +8,7 @@ def divisors(n):
     def _divisors():
         i = 1
         while i * i < n:
-            if n % i == 0:
+            if divides_by(n, i):
                 yield i
                 if i != 1:
                     yield n / i
@@ -53,3 +53,6 @@ def is_pandigital(x, n = None):
     c = set(str(cc) for cc in range(1, n or len(sx) + 1))
     return sx == c
 
+
+def divides_by(x, y):
+    return x % y == 0

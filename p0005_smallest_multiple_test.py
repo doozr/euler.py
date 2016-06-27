@@ -10,17 +10,21 @@ Answer:
 
 
 from functools import reduce
+from euler.math import divides_by
 
 
 def smallest_multiple(limit):
     # For each value that the accumulator does not already divide by,
     # multiply the accumulator by the lowest integer that makes it divide by
     # both the old accumulator and the new value
-    return reduce(
-        lambda acc, x: acc * next(y for y in range(1, x + 1) if (acc * y) % x == 0),
-        range(2, limit + 1),
-        1
-    )
+
+    def multiply_by_lowest_int(total, n):
+        lowest_multiplier = next(m for m in range(1, n + 1)
+                                 if divides_by(total * m, n))
+        return total * lowest_multiplier
+
+    return reduce(multiply_by_lowest_int,
+                  range(2, limit + 1), 1)
 
 
 def test_0005_smallest_multiple():
