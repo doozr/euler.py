@@ -13,17 +13,26 @@ Answer:
 """
 
 
-def special_triple(num):
-    return next((a, b, num - b - a)
-                for b in range(1, num)
-                for a in range(1, num - b)
-                if a**2 + b**2 == (num - b - a)**2)
+def mn(num):
+    return next((m, n)
+                for m in range(1, num)
+                for n in range(1, m)
+                if m * (m + n) == num // 2)
+
+
+def pythagoras_triangle(num):
+    m, n = mn(num)
+    return (m**2 - n**2,
+            2 * m * n,
+            m**2 + n**2)
 
 
 def special_triple_product(num):
-    a, b, c = special_triple(num)
+    a, b, c = pythagoras_triangle(num)
     return a * b * c
 
 
 def test_0009_special_triple():
     assert special_triple_product(1000) == 31875000
+
+
