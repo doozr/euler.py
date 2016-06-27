@@ -31,15 +31,15 @@ Answer:
 """
 
 
-from functools import reduce
 from euler.iter import window
+from euler.math import product
 
 
 def largest_product_in_series(seq, n):
-    return max(
-            reduce(lambda a, x: a * int(x), xs, 1)
-            for xs
-            in window(seq, n))
+    return max(product(int(x)
+                       for x in xs)
+               for xs
+               in window(seq, n))
 
 
 def test_0008_largest_product_in_series():
