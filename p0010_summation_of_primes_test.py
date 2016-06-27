@@ -18,3 +18,4 @@ def summation_of_primes(n):
 
 def test_0010_summation_of_primes():
     assert summation_of_primes(2000000) == 142913828922
+

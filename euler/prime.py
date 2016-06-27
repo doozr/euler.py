@@ -1,5 +1,5 @@
 from __future__ import absolute_import
-from itertools import count
+from itertools import count, chain
 from math import sqrt
 from euler.math import divides_by
 
@@ -17,13 +17,23 @@ def primes():
     return (x for x in count() if is_prime(x))
 
 
-def sieve(upper_bound):
-    marked = [0] * upper_bound
+def sieve_of_eratosthenes(upper_bound):
+    marked = [False] * upper_bound
     yield 2
-    for value in (x for x in range(3, upper_bound, 2) if marked[x] == 0):
+    for value in (x for x in range(3, upper_bound, 2) if not marked[x]):
         yield value
         for i in range(value, upper_bound, value):
-            marked[i] = 1
+            marked[i] = True
+
+
+def sieve(n):
+    marked = [True] * (n//2)
+    for i in (x for x in range(3, int(n**0.5 + 1), 2) if marked[x // 2]):
+        num_to_update = ((n - i * i - 1) // (2 * i) + 1)
+        marked[i * i // 2::i] = [False] * num_to_update
+    return chain([2], (2 * i + 1
+                       for i in range(1, n // 2)
+                       if marked[i]))
 
 
 def prime_factors(n):
