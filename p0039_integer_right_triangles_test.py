@@ -15,6 +15,7 @@ Answer:
 from math import sqrt
 from collections import Counter
 from euler.iter import first
+from euler.math import divides_by
 
 
 def pythagorean_triples(limit):
@@ -23,7 +24,7 @@ def pythagorean_triples(limit):
 
 
 def integer_right_triangles(limit):
-    return (int(a + b + c) for a, b, c in pythagorean_triples(limit) if c % 1 == 0)
+    return (int(a + b + c) for a, b, c in pythagorean_triples(limit) if divides_by(c, 1))
 
 
 def max_integer_right_triangle(limit):

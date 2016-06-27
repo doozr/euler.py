@@ -21,13 +21,14 @@ Answer:
 
 
 from functools import reduce
+from euler.math import divides_by
 
 
 memo = {1: 1}
 
 
 def next_collatz(n):
-    return n / 2 if n % 2 == 0 else 3 * n + 1
+    return n / 2 if divides_by(n, 2) else 3 * n + 1
 
 
 def count_collatz(n):

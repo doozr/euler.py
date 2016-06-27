@@ -1,6 +1,7 @@
 from math import floor, log10
 from euler.prime import sieve
 from euler.iter import length, scan
+from euler.math import divides_by
 
 
 def num_digits(x):
@@ -8,7 +9,7 @@ def num_digits(x):
 
 
 def has_even_digit(x):
-    return any((x / 10**n) % 2 == 0
+    return any(divides_by(x / 10**n, 2)
                for n in range(0, num_digits(x)))
 
 

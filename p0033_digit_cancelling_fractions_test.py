@@ -21,7 +21,7 @@ def nontrivial_fractions():
             for x in range(10, 100)
             for y in range((x % 10) * 10 + 1, (x % 10 + 1) * 10)
             if y > x and
-               float(x) / float(y) == float(x // 10) / float(y % 10))
+            float(x) / float(y) == float(x // 10) / float(y % 10))
 
 
 def mul_fracs(fracs):

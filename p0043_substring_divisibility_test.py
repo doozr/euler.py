@@ -19,10 +19,11 @@ Answer:
 
 
 from itertools import permutations
+from euler.math import divides_by
 
 
 def list_divides_by(s, x):
-    return int("".join(s)) % x == 0
+    return divides_by(int("".join(s)), x)
 
 
 def substring_divisibility():

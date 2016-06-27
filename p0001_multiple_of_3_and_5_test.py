@@ -11,10 +11,11 @@ Answer:
 
 
 from itertools import count, takewhile
+from euler.math import divides_by
 
 
 def multiples_of(ns):
-    return (x for x in count(1) if any(x % n == 0 for n in ns))
+    return (x for x in count(1) if any(divides_by(x, n) for n in ns))
 
 
 def multiples_of_three_and_five(limit):
