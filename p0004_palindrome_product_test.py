@@ -18,12 +18,12 @@ def palindrome_products(start, end):
     def countdown():
         return takewhile(lambda n: n > lower_bound, range(end, 0, -1))
 
-    candidates = ((x * y, min(x, y), x, y)
+    candidates = ((x * y, min(x, y))
                   for x in countdown()
                   for y in countdown()
                   if is_palindrome(x * y))
 
-    for palindrome, new_lower_bound, x, y in candidates:
+    for palindrome, new_lower_bound in candidates:
         yield palindrome
         lower_bound = new_lower_bound
 
