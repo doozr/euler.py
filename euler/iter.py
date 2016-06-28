@@ -141,7 +141,7 @@ def transpose(xss):
 
 
 def transpose_irregular(xss):
-    return ((x for x in xs if x is not None) for xs in zip_longest(*xss, fillvalue=None))
+    return zip_longest(*xss, fillvalue=None)
 
 
 def reverse(xs):

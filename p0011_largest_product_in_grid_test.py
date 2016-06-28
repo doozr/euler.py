@@ -46,10 +46,14 @@ def strip_heads(xss):
     return zip_with(lambda xs, n: islice(xs, n, None), xss, count())
 
 
+def filter_none(xs):
+    return (x for x in xs if x is not None)
+
+
 def diagonals(xss):
     return chain(
-        transpose_irregular(strip_tails(xss)),
-        islice(transpose_irregular(strip_heads(xss)), 1, None)
+        (filter_none(xs) for xs in transpose_irregular(strip_tails(xss))),
+        islice((filter_none(xs) for xs in transpose_irregular(strip_heads(xss))), 1, None)
     )
 
 
