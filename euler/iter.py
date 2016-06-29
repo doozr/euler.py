@@ -179,3 +179,5 @@ def first(seq):
 
 def last(seq):
     return reduce(lambda a, x: x, iter(seq))
+
+
