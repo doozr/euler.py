@@ -23,29 +23,24 @@ Answer:
 
 
 from itertools import count
-from euler.math import num_divisors, divides_by
-from euler.iter import first, get_at
+from euler.math import product, divides_by
+from euler.prime import prime_factors
+from collections import Counter
 
 
-def triangle_numbers():
-    x = 0
-    for y in count(1):
-        x = x + y
-        yield x
-
-
-def num_divisors_for_nth_triangle_number(n):
-    if divides_by(n, 2):
-        return num_divisors(n // 2) * num_divisors(n + 1)
-    else:
-        return num_divisors(n) * num_divisors(n // 2 + 1)
-
-
-def first_with_n_divisors(seq, t):
-    i = first(n for n in count(1) if num_divisors_for_nth_triangle_number(n) >= t)
-    return get_at(i, seq)
+def first_with_n_divisors(t):
+    x = []
+    y = []
+    for n in count(2):
+        if divides_by(n, 2):
+            y = list(prime_factors(n + 1))
+        else:
+            x = list(prime_factors(n // 2 + 1))
+        fs = dict(Counter(x + y))
+        if product(f + 1 for f in fs.values()) >= t:
+            return sum(range(1, n+1))
 
 
 def test_0012_highly_divisible_triangle_number():
-    assert first_with_n_divisors(triangle_numbers(), 500) == 76576500
+    assert first_with_n_divisors(500) == 76576500
 
