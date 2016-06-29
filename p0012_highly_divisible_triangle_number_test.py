@@ -22,9 +22,9 @@ Answer:
 """
 
 
-from itertools import count, chain
+from itertools import count
 from euler.math import num_divisors, divides_by
-from euler.iter import take, last
+from euler.iter import first, get_at
 
 
 def triangle_numbers():
@@ -42,8 +42,8 @@ def num_divisors_for_nth_triangle_number(n):
 
 
 def first_with_n_divisors(seq, t):
-    i = next(n for n in count(1) if num_divisors_for_nth_triangle_number(n) >= t)
-    return last(take(seq, i))
+    i = first(n for n in count(1) if num_divisors_for_nth_triangle_number(n) >= t)
+    return get_at(i, seq)
 
 
 def test_0012_highly_divisible_triangle_number():

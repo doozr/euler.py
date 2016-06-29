@@ -3,6 +3,17 @@ from itertools import zip_longest
 from functools import reduce
 
 
+def get_at(n, seq):
+    """
+    Get the value at offset n of a non-indexed sequence
+
+    :param n: The index of the value to get
+    :param seq: The sequence to get the value from
+    :return: The value at the given sequence
+    """
+    return last(take(seq, n))
+
+
 def take(seq, n):
     """
     Get the first n values in a sequence
