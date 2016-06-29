@@ -11,18 +11,18 @@ def get_at(n, seq):
     :param seq: The sequence to get the value from
     :return: The value at the given sequence
     """
-    return last(take(seq, n))
+    return last(take(n, seq))
 
 
-def take(seq, n):
+def take(n, seq):
     """
     Get the first n values in a sequence
 
         take([1, 2, 3, 4], 2)
         >> 1, 2
 
-    :param seq: The sequence to pull values from
     :param n: The number of values to pull
+    :param seq: The sequence to pull values from
     :return: A generator yielding the first n values of seq
     """
     if n < 0:
@@ -68,10 +68,10 @@ def every(seq, step, skip=None):
     """
     i = iter(seq)
     if skip is not None:
-        list(take(i, skip))
+        list(take(skip, i))
         yield next(i)
     while True:
-        list(take(i, step - 1))
+        list(take(step - 1, i))
         yield next(i)
 
 
@@ -93,7 +93,7 @@ def window(seq, n):
     if n <= 0:
         raise ValueError("Window size must be positive integer")
     it = iter(seq)
-    w = deque(take(it, n), maxlen=n)
+    w = deque(take(n, it), maxlen=n)
     yield list(w)
     for x in it:
         w.append(x)
@@ -119,7 +119,7 @@ def window_greedy(seq, n):
     if n <= 0:
         raise ValueError("Window size must be positive integer")
     it = iter(seq)
-    w = deque(take(it, 1), maxlen=n)
+    w = deque(take(1, it), maxlen=n)
     yield list(w)
     for x in it:
         w.append(x)

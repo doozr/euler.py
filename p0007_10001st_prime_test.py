@@ -18,7 +18,7 @@ def nth_prime(n):
     # The actual 10001st prime is 104743 so 104744 would be enough
     # but given the calculation is lazy it doesn't make a lot of
     # difference. Just storage size of the cache
-    return last(take(sieve(104744), n))
+    return last(take(n, sieve(104744)))
 
 
 def test_10001st_prime():
