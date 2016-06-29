@@ -22,11 +22,9 @@ Answer:
 """
 
 
-from collections import Counter
-from functools import reduce
-from itertools import count
-from operator import mul
-from euler.prime import prime_factors
+from itertools import count, chain
+from euler.math import num_divisors, divides_by
+from euler.iter import take, last
 
 
 def triangle_numbers():
@@ -36,13 +34,16 @@ def triangle_numbers():
         yield x
 
 
-def num_divisors(n):
-    fs = dict(Counter(prime_factors(n)))
-    return reduce(mul, (x + 1 for x in fs.values()), 1)
+def num_divisors_for_nth_triangle_number(n):
+    if divides_by(n, 2):
+        return num_divisors(n // 2) * num_divisors(n + 1)
+    else:
+        return num_divisors(n) * num_divisors(n // 2 + 1)
 
 
-def first_with_n_divisors(seq, n):
-    return next(x for x in seq if num_divisors(x) >= n)
+def first_with_n_divisors(seq, t):
+    i = next(n for n in count(1) if num_divisors_for_nth_triangle_number(n) >= t)
+    return last(take(seq, i))
 
 
 def test_0012_highly_divisible_triangle_number():

@@ -2,6 +2,8 @@ from __future__ import absolute_import
 from math import log
 from functools import reduce
 from operator import mul
+from collections import Counter
+from euler.prime import prime_factors
 
 
 def divisors(n):
@@ -16,6 +18,11 @@ def divisors(n):
         if i * i == n:
             yield i
     return set(_divisors())
+
+
+def num_divisors(n):
+    fs = dict(Counter(prime_factors(n)))
+    return product(x + 1 for x in fs.values())
 
 
 def product(seq):

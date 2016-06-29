@@ -1,7 +1,6 @@
 from __future__ import absolute_import
 from itertools import count, chain
 from math import sqrt
-from euler.math import divides_by
 
 
 def is_prime(n):
@@ -42,8 +41,8 @@ def prime_factors(n):
         return
     i = 2
     while i * i < n:
-        while divides_by(n, i):
-            n /= i
+        while n % i == 0:
+            n //= i
             yield i
         i += 1
     if n > 1:
