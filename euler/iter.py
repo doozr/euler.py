@@ -148,36 +148,111 @@ def zip_with(fn, *args):
 
 
 def transpose(xss):
+    """
+    Transpose a 2 dimensional array made up of lists of lists
+
+        transpose([[1, 2], [3, 4]])
+        >> [[1, 3], [2, 4]]
+
+    :param xss: A 2 dimensional array
+    :return: The transposed array
+    """
     return zip(*xss)
 
 
 def transpose_irregular(xss):
+    """
+    Transpose a 2 dimensional array with an irregular number of
+    fields in each row.
+
+    Fills any gaps with None.
+
+        transpose_irregular([[1, 2], [3, 4, 5], [6, 7]])
+        >> [[1, 3, 6], [2, 4, 7], [None, 5, None]]
+
+    :param xss: An irregular 2 dimensional array
+    :return: The transposed array
+    """
     return zip_longest(*xss, fillvalue=None)
 
 
 def reverse(xs):
+    """
+    Reverse a sequence and return it as a list
+
+    :param xs: A sequence
+    :returns: A list representing the reversed sequence
+    """
     return list(xs)[::-1]
 
 
 def scan(fn, xs, a):
+    """
+    Reduce a sequence xs using function fn with starting value a
+    yielding every intermediate value.
+
+        list(scan(lambda a, x: a + x, [1, 2, 3], 0))
+        >> [1, 3, 6]
+
+    :param fn: The function to call on each element
+    :param xs: The sequence to process
+    :param a: The starting accumulator value
+    :returns: A sequence of values produced by fn
+    """
     for x in xs:
         a = fn(a, x)
         yield a
 
 
 def scan_right(fn, xs, a):
+    """
+    Reduce the reverse of sequence xs using function fn with starting value a
+    yielding every intermediate value.
+
+        list(scan_right(lambda a, x: a + x, [1, 2, 3], 0))
+        >> [3, 5, 6]
+
+    :param fn: The function to call on each element
+    :param xs: The sequence to process
+    :param a: The starting accumulator value
+    :returns: A sequence of values produced by fn
+    """
     return reverse(scan(fn, reverse(xs), a))
 
 
 def length(seq):
+    """
+    Get the total length of a sequence.
+
+    This is very inefficient as it walks the whole sequence.
+    Consider if you really need this very carefully.
+
+    :param seq: A sequence
+    :return: The total length of the sequence
+    """
     return reduce(lambda a, _: a + 1, seq, 0)
 
 
 def first(seq):
+    """
+    Get the first value in a sequence.
+
+    :param seq: A sequence
+    :return: The first value of the sequence
+    """
     return next(iter(seq))
 
 
 def last(seq):
+    """
+    Get the last value in a sequence.
+
+    This is very inefficient as it walks the whole sequence.
+    Consider if you really need this very carefully.
+
+    :param seq: A sequence
+    :return: The last value of the sequence
+    """
     return reduce(lambda a, x: x, iter(seq))
 
 
